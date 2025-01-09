@@ -3,7 +3,7 @@ import axios from 'axios';
 
 class MAuthService {
   constructor() {
-    this.baseApiUrl = 'http://localhost:5001/api' || '';
+    this.baseApiUrl = '/api' || '';
 
     this.instance = axios.create({
       baseURL: this.baseApiUrl,

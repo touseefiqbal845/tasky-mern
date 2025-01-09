@@ -15,14 +15,14 @@ const expressLoader = (app) => {
   opts.jwtFromRequest = cookieExtractor;
   opts.secretOrKey = process.env.JWT_SECRET_KEY;
 
-  const corsOptions = {
-    origin: "http://localhost:3000",  // Frontend origin (allow the React app)
-    credentials: true,  // Allow cookies to be sent
-    allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept, Authorization", // Allow necessary headers
-    methods: "GET, POST, PUT, DELETE", // Allowed HTTP methods
-  };
   
-  app.use(cors(corsOptions)); 
+  const path = require('path');
+app.use(express.static(path.join(__dirname, '../client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+  app.use(cors()); 
   app.use(cookieParser());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));

@@ -3,7 +3,7 @@ import authService from "./MauthServices";
 
 const checkAuthentication = async () => {
     try {
-      const response = await axios.get("http://localhost:5001/api/auth/users/dashboardd", {
+      const response = await axios.get("/api/auth/users/dashboardd", {
         withCredentials: true,  
       });
   
